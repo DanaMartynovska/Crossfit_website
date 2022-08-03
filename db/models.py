@@ -7,6 +7,6 @@ class Task(models.Model):
 
     author = models.ForeignKey(auth_models.User, on_delete=models.CASCADE)
 
-    opened_at = models.DateTimeField()
-    closed_at = models.DateTimeField()
+    opened_at = models.DateTimeField(auto_created=True)
+    closed_at = models.DateTimeField(null=True, blank=True)
 

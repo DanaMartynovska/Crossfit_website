@@ -26,6 +26,9 @@ share/python-wheels/
 .installed.cfg
 *.egg
 .idea
+.env
+.sqlite3
+pycache/
 MANIFEST
 
 # PyInstaller

@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
+
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
-g
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backend',
     'db',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +62,7 @@ ROOT_URLCONF = 'crossfit.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,8 +83,12 @@ WSGI_APPLICATION = 'crossfit.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'crossfit',
+        'USER': 'postgres',
+        'PASSWORD': os.getenv('DB_PASS'),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
